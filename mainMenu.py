@@ -27,7 +27,7 @@ def inputMenu(event):
     if event.type == pygame.KEYDOWN:
         match event.key:
             case pygame.K_SPACE | pygame.K_RETURN:
-                stages = ["gameRunning", "highScores", "help"]
+                stages = ["levelSelection", "highScores", "help"]
                 return stages[highlightedButton]
             case pygame.K_DOWN | pygame.K_s:
                 highlightedButton = min(highlightedButton+1, 2)

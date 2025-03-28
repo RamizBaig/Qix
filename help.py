@@ -11,7 +11,10 @@ def renderHelp(screen):
     screen.blit(hint1, (400 - hint1.get_width() // 2, 240))
     screen.blit(hint2, (400 - hint2.get_width() // 2, 340))
     
+    hint3 = font2.render("Hint: Use \'ESC\' or \'SPACE\' or \'ENTER\' to return", True, (255,255,255))
+    screen.blit(hint3, (400 - hint3.get_width() // 2, 540))
+    
 def inputHelp(event):
     if event.type == pygame.KEYDOWN:
-        if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN:
+        if event.key == pygame.K_SPACE or event.key == pygame.K_RETURN or event.key == pygame.K_ESCAPE:
             return True
