@@ -30,8 +30,8 @@ class Board:
         return self.qixPos
 
     def renderBoard(self, screen):
-        mask_surface = self.mask.to_surface(setcolor=(50,50,50), unsetcolor=(0, 255, 0))
-        region_surface = self.regionBorders.to_surface(setcolor=(0,0,0,0), unsetcolor=(0,0,255))
+        mask_surface = self.mask.to_surface(setcolor=(50,50,50), unsetcolor=(81, 129, 232))
+        region_surface = self.regionBorders.to_surface(setcolor=(0,0,0,0), unsetcolor=(22, 27, 145))
         
         screen.blit(mask_surface, (90, 60))
         
@@ -40,7 +40,7 @@ class Board:
             screen.blit(region_surface, (90 + dx, 60 + dy))
         
         if self.incursion:
-            path_surface = self.dynamicMask.to_surface(setcolor=(0,0,0,0), unsetcolor=(255,0,0))
+            path_surface = self.dynamicMask.to_surface(setcolor=(0,0,0,0), unsetcolor=(13, 16, 84))
             for dx, dy in offsets:
                 screen.blit(path_surface, (90 + dx, 60 + dy))
     

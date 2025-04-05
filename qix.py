@@ -118,7 +118,7 @@ class Qix:
     def renderQix(self, screen):
         for i, (start, end) in enumerate(self.trail_points):
             alpha = int(255 * (i + 1) / len(self.trail_points))  # Fade effect
-            color = (255, 0, 0, alpha)  
+            color = (194, 16, 63, alpha)  
             self.draw_transparent_line(screen, color, start, end, 3)
 
         start, end = self.getQixLine()

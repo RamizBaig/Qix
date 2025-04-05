@@ -1,5 +1,4 @@
 import pygame
-#from Board import getBoard
 movement_vectors = {
         pygame.K_LEFT:  (-3,  0),  pygame.K_a:  (-3,  0),
         pygame.K_RIGHT: ( 3,  0),  pygame.K_d:  ( 3,  0),
@@ -121,7 +120,7 @@ class Player:
         ring_surface.fill((0, 0, 0, 0))  # Fully transparent background
 
         # Draw the outer circle (red)
-        pygame.draw.circle(ring_surface, (255, 0, 0, 255), (10, 10), 8, width=3)
+        pygame.draw.circle(ring_surface, (20, 196, 37, 255), (10, 10), 8, width=3)
 
         # Blit onto the main screen
         screen.blit(ring_surface, (self.pos[0] - 10, self.pos[1] - 10))
