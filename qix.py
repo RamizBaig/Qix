@@ -11,7 +11,7 @@ class Qix:
         self.target_rotation = self.rotation_angle
         self.line_length = random.randint(30, 65) 
         self.target_line_length = self.line_length
-        self.movement_steps = 60 
+        self.movement_steps = 60 - board.level
         self.current_step = 0
         self.trail_points = []
 
@@ -74,11 +74,11 @@ class Qix:
 
     def trimPoint(self, point):
         x, y = point
-        max_attempts = 150  # Prevents infinite looping
+        max_attempts = 150  
 
         for _ in range(max_attempts):
             if self.board.findMaskPixel((x, y), self.board.mask) == 1:
-                return (x, y)  # Found a valid spot
+                return (x, y)  
             x = (x*3 + self.center_pos[0]) // 4
             y = (y*3 + self.center_pos[1]) // 4
         return self.center_pos

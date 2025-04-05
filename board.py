@@ -2,7 +2,8 @@ import pygame
 
 WIDTH, HEIGHT = 619, 490
 class Board:
-    def __init__(self):
+    def __init__(self, newLevel):
+        self.level = newLevel
         self.mask = pygame.Mask((WIDTH, HEIGHT))
         self.regionBorders = pygame.Mask((WIDTH, HEIGHT))
         self.newIncursionMask()
@@ -31,11 +32,18 @@ class Board:
     def renderBoard(self, screen):
         mask_surface = self.mask.to_surface(setcolor=(50,50,50), unsetcolor=(0, 255, 0))
         region_surface = self.regionBorders.to_surface(setcolor=(0,0,0,0), unsetcolor=(0,0,255))
+        
         screen.blit(mask_surface, (90, 60))
-        screen.blit(region_surface, (90, 60))
+        
+        offsets = [(0, 0), (1, 0), (-1, 0), (0, 1), (0, -1)]
+        for dx, dy in offsets:
+            screen.blit(region_surface, (90 + dx, 60 + dy))
+        
         if self.incursion:
             path_surface = self.dynamicMask.to_surface(setcolor=(0,0,0,0), unsetcolor=(255,0,0))
-            screen.blit(path_surface, (90, 60))
+            for dx, dy in offsets:
+                screen.blit(path_surface, (90 + dx, 60 + dy))
+    
 
     def getMask(self):
         return self.mask

@@ -9,7 +9,7 @@ def renderPaused(screen):
     hint2 = font2.render("Press enter to view help menu", True, (255,255,255))
     screen.blit(title, (400 - title.get_width() // 2, 50))
     screen.blit(hint1, (400 - hint1.get_width() // 2, 240))
-    screen.blit(hint2, (400 - hint2.get_width() // 2, 260))
+    screen.blit(hint2, (400 - hint2.get_width() // 2, 300))
     
 def inputPaused(event):
     if event.type == pygame.KEYDOWN:

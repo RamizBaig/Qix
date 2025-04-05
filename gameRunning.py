@@ -51,7 +51,7 @@ def gameLogic():
         
     
 def inputGame(event): 
-    global timeWhenPaused, lastSparxSummon
+    global timeWhenPaused, lastSparxSummon, showBonus
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_ESCAPE or event.key == pygame.K_p:
             timeWhenPaused = pygame.time.get_ticks()
@@ -59,6 +59,7 @@ def inputGame(event):
                 timeUntilUnfreeze = (frozenLength) - (pygame.time.get_ticks() - timeAtFreeze)
                 if timeUntilUnfreeze > 0:
                     lastSparxSummon -= timeUntilUnfreeze
+            showBonus = False
             return True
     player.inputPlayer(event)
 
@@ -130,7 +131,7 @@ def newLevel():
     global board, player, qix, lastPercentageUpdate, timeAtFreeze, frozenLength, showBonus
     resetBoard()
     showBonus = True
-    board = Board()
+    board = Board(level)
     player = Player(board)
     qix = Qix(board)
     lastPercentageUpdate = 0
@@ -151,12 +152,12 @@ def resetGame(boardRequiredPercent):
     showBonus = False
     requiredPercent = boardRequiredPercent
     lastPercentageUpdate = 0
-    board = Board()
+    board = Board(level)
     player = Player(board)
     qix = Qix(board)
     lastPlayerMoveTime, playerMoveInterval = 0, 20
     lastSparxMoveTime , sparxMoveInterval  = 0, 20
-    lastSparxSummon , SparxSummonConstant  = -999999, 5000*2
+    lastSparxSummon , SparxSummonConstant  = -999999, 20000*2
     lastQixMoveTime , qixMoveInterval = 0, 10
     numSparx = [4,6,8,10,12]
     currentSparxLeft = numSparx[min(level, len(numSparx)-1)]
