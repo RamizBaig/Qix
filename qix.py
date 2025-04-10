@@ -16,7 +16,7 @@ class Qix:
         self.trail_points = []
 
 
-    def choose_new_target(self):
+    def chooseNewTarget(self):
         targetRange = 220
         degreeRange = 180
         width, height = self.board.mask.get_size()
@@ -38,7 +38,7 @@ class Qix:
 
     def updatePosition(self):
         if self.board.findMaskPixel(self.target_pos, self.board.mask) != 1:
-            self.choose_new_target()
+            self.chooseNewTarget()
             return
         if self.current_step < self.movement_steps:
             t = 1 / self.movement_steps
@@ -52,7 +52,7 @@ class Qix:
             self.current_step += 1
             self.board.qixPos = self.center_pos
         else:
-            self.choose_new_target()  
+            self.chooseNewTarget()  
         
         if self.current_step % 10 == 0:
             self.trail_points.append(self.getQixLine())
@@ -85,12 +85,12 @@ class Qix:
 
     def playerHit(self):
         start, end = self.getQixLine()
-        for point in self.get_line_pixels(start, end):
+        for point in self.getLinePixels(start, end):
             if self.board.findMaskPixel(point, self.board.dynamicMask) == 0:
                 return True  
         return False  
 
-    def get_line_pixels(self, start, end):
+    def getLinePixels(self, start, end):
         x1, y1 = start
         x2, y2 = end
         pixels = []
